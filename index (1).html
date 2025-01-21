@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Répondez à la question suivante</h1>
+    <p>Quelle est le nom du grand père de Goku ?</p>
+    <form id="quizForm">
+        <input type="radio" name="answer" value="1" id="rep1">
+        <label for="rep1">Tortue génial</label><br>
+        <input type="radio" name="answer" value="2" id="rep2">
+        <label for="rep2">Gohan</label><br>
+        <input type="radio" name="answer" value="3" id="rep3">
+        <label for="rep3">Mr Popo</label><br><br>
+        <button type="button" onclick="checkAnswer()">Valider</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        function checkAnswer() {
+            // Récupérer la réponse sélectionnée
+            const answers = document.getElementsByName('answer');
+            let selectedAnswer = null;
+
+            for (let answer of answers) {
+                if (answer.checked) {
+                    selectedAnswer = answer.value;
+                    break;
+                }
+            }
+
+            // Afficher un numéro en fonction de la réponse
+            const resultDiv = document.getElementById('result');
+            if (selectedAnswer) {
+                switch (selectedAnswer) {
+                    case '1':
+                        resultDiv.textContent = "Numéro attribué : 1";
+                        break;
+                    case '2':
+                        resultDiv.textContent = "Numéro attribué : 2";
+                        break;
+                    case '3':
+                        resultDiv.textContent = "Numéro attribué : 3";
+                        break;
+                }
+            } else {
+                resultDiv.textContent = "Veuillez sélectionner une réponse.";
+            }
+        }
+    </script>
+</body>
+
+</html>
